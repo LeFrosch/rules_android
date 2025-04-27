@@ -55,6 +55,9 @@ def _adapt(target, ctx):
     if not JavaInfo in target:
         return []
 
+    if target[JavaInfo].neverlink:
+        return []
+
     return [
         providers.make_mi_android_dex_info(
             dex_shards = dex(
